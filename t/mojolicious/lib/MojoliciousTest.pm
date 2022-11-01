@@ -157,9 +157,9 @@ sub startup {
 
   # /just/some/template (embedded template)
   $r->any('/just/some/template')->to(template => 'just/some/template');
-  
+
   # /v1/bar without hash(#)
-  my $v1 = $r->any('/v1');
+  my $v1     = $r->any('/v1');
   my $v1_bar = $v1->any('/bar')->to('Vn::Bar');
   $v1_bar->get('/a')->to('#a');
   $v1_bar->get('/b')->to('#b');
@@ -168,9 +168,9 @@ sub startup {
   $v1_bar_foo->get('/d')->to('#d');
   $v1_bar_foo->get('/e')->to('#e');
   $v1_bar_foo->get('/f')->to('#f');
-  
+
   # /v2/bar with hash(#)
-  my $v2 = $r->any('/v2');
+  my $v2     = $r->any('/v2');
   my $v2_bar = $v2->any('/bar')->to('Vn::Bar#');
   $v2_bar->get('/a')->to('#a');
   $v2_bar->get('/b')->to('#b');
@@ -178,8 +178,8 @@ sub startup {
   my $v2_bar_foo = $v2_bar->any('/foo')->to('Vn::Bar::Foo#');
   $v2_bar_foo->get('/d')->to('#d');
   $v2_bar_foo->get('/e')->to('#e');
-  $v2_bar_foo->get('/f')->to('#f');  
-  
+  $v2_bar_foo->get('/f')->to('#f');
+
   # /another/app
   $r->get('/another/app/g')->to('MojoliciousTest4');
   $r->get('/another/app/h')->to('MojoliciousTest4');
